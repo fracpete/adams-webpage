@@ -2,3 +2,7 @@
 **/*~
 *.swp
 **/*.swp
+mantisBT
+snapshots
+releases
+old
