@@ -1,149 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>ADAMS - The Advanced Data mining And Machine learning System</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico">
 
-    <!-- Le styles -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <title>ADAMS - The Advanced Data mining And Machine learning System</title>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!-- load jquery at start for imports -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/adams.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
   </head>
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand">ADAMS <small>- a different take on workflows</small></a>
+    <span id="navbarimport"></span>
+    <script>$("#navbarimport").load("navbar.html");</script>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <div style="float: left; width: 64px; height: 64px; "><img src="img/logo.png" height="64" width="64"/></div>
+        <h1>Welcome to ADAMS!</h1>
+        <br/>
+        <p>The Advanced Data mining And Machine learning System (ADAMS) is a novel, flexible workflow engine aimed at quickly building and maintaining real-world, complex knowledge workflows, released under <a href="http://www.gnu.org/licenses/gpl-3.0.txt" target="_blank">GPLv3</a>.</p>
+        <div style="float: left; "><p>Current version: <a href="https://sourceforge.net/projects/theadamsflow/files/0.4.5/" target="_blank">0.4.5</a> (May 16, 2014)</p></div>
+        <div style="float: right; ">
+          <a href="https://twitter.com/TheAdamsFlow" target="_blank"><img src="img/twitter.png" height="32"/></a>
+          <span style="padding: 15px"/>
+          <a href="http://www.youtube.com/user/TheAdamsWorkflow" target="_blank"><img src="img/youtube.png" height="32"/></a>
         </div>
       </div>
     </div>
 
     <div class="container">
-
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit" style="padding: 16px; ">
-        <div style="float: left; width: 64px; height: 64px; "><img src="img/logo.png" height="64" width="64"/></div>
-        <h1>Welcome to ADAMS!</h1>
-        <br/>
-        <p>The Advanced Data mining And Machine learning System (ADAMS) is a novel, flexible workflow engine aimed at quickly building and maintaining real-world, complex knowledge workflows, released under <a href="http://www.gnu.org/licenses/gpl-3.0.txt" target="_blank">GPLv3</a>.</p>
-        <p>Current version: <a href="https://sourceforge.net/projects/theadamsflow/files/0.4.5/" target="_blank">0.4.5</a> (May 16, 2014)</p>
-        <!--p><a class="btn btn-primary btn-large" href="/about">Learn more &raquo;</a></p-->
-      </div>
-
+      <!-- Example row of columns -->
       <div class="row">
-        <div class="span1">
-          <p>&nbsp;</p>
+        <div class="col-md-4">
+          <h2>About</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="http://getbootstrap.com/examples/jumbotron/#" role="button">View details »</a></p>
         </div>
-        <div class="span4">
-          <p><a class="btn" style="font-size: 180%; width: 100%; text-align: left; "><img src="img/download.png" width="48" height="48"/> <b>Download</b></a></p>
-          <p>
-            <ul>
-              <li><a href="/downloads">Release</a>: if you want a stable version</li>
-              <li><a href="/snapshots/adams/">Snapshot</a>: for bleeding edge functionality and latest bugfixes</li>
-            </ul>
-          </p>
-        </div>
-        <div class="span2">
-          <p>&nbsp;</p>
-        </div>
-        <div class="span4">
-          <p><a class="btn" style="font-size: 180%; width: 100%; text-align: left; "><img src="img/question.png" width="48" height="48"/> <b>Get help</b></a></p>
-          <p>
-            <ul>
-              <li>Users: <a href="/getting-started">Getting started</a>, <a href="/examples">Examples</a>, <a href="/documentation">Docs</a>, <a href="/users">Forum</a></li>
-              <li>Developers: <a href="/getting-started-dev">Getting started</a>, <a href="/source">Source code</a>, <a href="/developers">Forum</a></li>
-              <li><a href="/consulting">Consulting</a>: do you need data mining experts?</li>
-            </ul>
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="span1">
-          <p>&nbsp;</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="span1">
-          <p>&nbsp;</p>
-        </div>
-        <div class="span4">
-          <p><a class="btn" style="font-size: 180%; width: 100%; text-align: left; "><img src="img/development.png" width="48" height="48"/> <b>Get involved</b></a></p>
-          <p>
-            <ul>
-              <li><a href="/developers">Developers and Writers</a>: you want to share code or documentation?</li>
-              <li><a href="/bugs/">Bugs</a>: if you spot one, report it!</li>
-            </ul>
-          </p>
-        </div>
-        <div class="span2">
-          <p>&nbsp;</p>
-        </div>
-        <div class="span4">
-          <p><a class="btn" style="font-size: 180%; width: 100%; text-align: left; "><img src="img/info.png" width="48" height="48"/> <b>About</b></a></p>
-          <p>
-            <ul>
-              <li><a href="/about">What is ADAMS?</a></li>
-              <li><a href="/features">Features</a> of ADAMS</li>
-              <li><a href="/screenshots">Screenshots</a></li>
-              <li><a href="/publications">Publications</a> in which ADAMS was used</li>
-            </ul>
-          </p>
+        <div class="col-md-4">
+          <h2>Download</h2>
+          <p>ADAMS is written in Java and runs on any platform that supports Java 1.7. You can either download a <strong>release</strong> (usually considered stable) or a <strong>snapshot</strong> (if you want to get the latest updates).</p>
+          <p><a class="btn btn-default" href="release.html" role="button">Release »</a><span style="padding: 5px; "></span><a class="btn btn-default" href="snapshot.html" role="button">Snapshot »</a></p>
+       </div>
+        <div class="col-md-4">
+          <h2>Get started</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-default" href="http://getbootstrap.com/examples/jumbotron/#" role="button">View details »</a></p>
         </div>
       </div>
 
-      <hr>
-
-      <footer>
-        <p style="text-align: center; "><a href="https://twitter.com/TheAdamsFlow" target="_blank">Follow us on Twitter <img src="img/twitter.jpg" width="20" height="20"/></a> or <a href="http://www.youtube.com/user/TheAdamsWorkflow" target="_blank">watch videos on YouTube <img src="img/youtube.png" width="49" height="20"/></a></p>
-        <p style="text-align: center; ">&copy; 2012-2014 <a href="http://www.waikato.ac.nz/">University of Waikato</a>, Hamilton, NZ</p>
-        <p align="center"><script type="text/javascript" src="http://www.ohloh.net/p/616433/widgets/project_thin_badge.js"></script></p>
-      </footer>
-
+      <span id="footerimport"></span>
+      <script>$("#footerimport").load("footer.html");</script>
     </div> <!-- /container -->
 
-    <!-- Le javascript
+
+    <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap-transition.js"></script>
-    <script src="js/bootstrap-alert.js"></script>
-    <script src="js/bootstrap-modal.js"></script>
-    <script src="js/bootstrap-dropdown.js"></script>
-    <script src="js/bootstrap-scrollspy.js"></script>
-    <script src="js/bootstrap-tab.js"></script>
-    <script src="js/bootstrap-tooltip.js"></script>
-    <script src="js/bootstrap-popover.js"></script>
-    <script src="js/bootstrap-button.js"></script>
-    <script src="js/bootstrap-collapse.js"></script>
-    <script src="js/bootstrap-carousel.js"></script>
-    <script src="js/bootstrap-typeahead.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  
 
-  </body>
-</html>
+</body></html>
