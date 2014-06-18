@@ -36,10 +36,168 @@
       <div class="page-header">
         <h1>Get started (Developer)</h1>
       </div>
-
-      <div id="footer">
+      
+      <div class="panel-group" id="accordion-dev">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion-dev" href="#collapse-dev-1">
+                Requirements
+              </a>
+            </h4>
+          </div>
+          <div id="collapse-dev-1" class="panel-collapse collapse">
+            <div class="panel-body">
+              <p>The requirements for ADAMS are as follows:</p>
+              <ul>
+                <li><a href="http://www.oracle.com/technetwork/java/" target="_blank">Java</a> 1.7+</li>
+                <li><a href="http://maven.apache.org/" target="_blank">Maven</a> 3.0+</li>
+                <li><a href="http://www.tug.org/texlive/" target="_blank">TexLive</a> 2010+ (for compiling the LaTeX manuals)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion-dev" href="#collapse-dev-2">
+                Source code
+              </a>
+            </h4>
+          </div>
+          <div id="collapse-dev-2" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-group" id="accordion-source">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion-source" href="#collapse-source-1">
+                        Obtaining the source code
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-source-1" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>The ADAMS source code is hosted in the following subversion repository:</p>
+                      <p><code><a href="https://svn.cms.waikato.ac.nz/svn/adams/base/trunk/" target="_blank">https://svn.cms.waikato.ac.nz/svn/adams/base/trunk/</a></code></p>
+                      <p>You can check out the code ("trunk") in the console with the following command:</p>
+                      <p><code>svn checkout <a href="https://svn.cms.waikato.ac.nz/svn/adams/base/trunk" target="_blank">https://svn.cms.waikato.ac.nz/svn/adams/base/trunk</a> adams</code></p>
+                      <p>Further modules are available:</p>
+                      <ul>
+                        <li>
+                          <p><strong>addons</strong> (less common used):</p>
+                          <p><code><a href="https://svn.cms.waikato.ac.nz/svn/adams/addons/trunk/" target="_blank">https://svn.cms.waikato.ac.nz/svn/adams/addons/trunk/</a></code></p>
+                        </li>
+                        <li>
+                          <p><strong>incubator</strong> (experimental):</p>
+                          <p><code><a href="https://svn.cms.waikato.ac.nz/svn/adams/incubator/trunk/" target="_blank">https://svn.cms.waikato.ac.nz/svn/adams/incubator/trunk/</a></code></p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion-source" href="#collapse-source-2">
+                        Compiling the source code
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-source-2" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>ADAMS uses <a href="http://maven.apache.org/" target="_blank">Maven</a> as build tool. See the Requirements section for more details on what you need for compiling the code.</p>
+                      <p>Download the <a href="resources/settings.xml" target="_blank">settings.xml</a> file and place it in the following directory (if you are behind a proxy, see section <strong>Proxy</strong> below):</p>
+                      <ul>
+                        <li>Linux/Unix/Mac: <code>$HOME/.m2</code></li>
+                        <li>Windows: <code>%USERPROFILE%\.m2</code></li>
+                      </ul>
+                      <p>You can compile the source code in the console as follows:</p>
+                      <p><code>mvn clean install</code></p>
+                      <p>If you want to skip the tests, use the following:</p>
+                      <p><code>mvn clean install -DskipTests=true</code></p>
+                      <p>This will generate a ZIP archive in the <em>target</em> directory of the <em>adams-base-all</em> module that contains all the jars and scripts to start ADAMS and the generated documentation.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion-source" href="#collapse-source-3">
+                        Proxy
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-source-3" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>If you are behind a proxy, you need to tell Maven about it. Let's assume that your proxy is called proxy.blah.com and its port 3128.</p>
+                      <p>If you don't need a password to connect to it, you can add the following tag to your <em>settings.xml</em> file</p>
+                      <pre>
+&lt;proxy&gt;
+  &lt;active&gt;true&lt;/active&gt;
+  &lt;protocol&gt;http&lt;/protocol&gt;
+  &lt;host&gt;proxy.blah.com&lt;/host&gt;
+  &lt;port&gt;3128&lt;/port&gt;
+  &lt;nonProxyHosts&gt;localhost|*.blah.com&lt;/nonProxyHosts&gt;
+&lt;/proxy&gt;
+                      </pre>
+                      <p>If your proxy requires a user/password, then you have to 1) generate a master password with Maven (which gets stored in <em>.m2/settings-security.xml</em>) and then 2) the actual password for the proxy. The details are explained <a href="http://maven.apache.org/guides/mini/guide-encryption.html" target="_blank">here</a> on the Maven homepage. Once you've created the passwords, you have to add the following tag to your <em>settings.xml</em> file and replace the <em>USER</em> and <em>ENCRYPTED_PASSWORD</em> placeholders accordingly.</p>
+                      <pre>
+&lt;proxy&gt;
+  &lt;active&gt;true&lt;/active&gt;
+  &lt;protocol&gt;http&lt;/protocol&gt;
+  &lt;host&gt;proxy.blah.com&lt;/host&gt;
+  &lt;port&gt;3128&lt;/port&gt;
+  &lt;username&gt;USER&lt;/username&gt;
+  &lt;password&gt;{ENCRYPTED_PASSWORD}&lt;/password&gt;
+  &lt;nonProxyHosts&gt;localhost|*.blah.com&lt;/nonProxyHosts&gt;
+&lt;/proxy&gt;
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion-source" href="#collapse-source-4">
+                        Eclipse
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-source-4" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>You can directly import Maven projects in Eclipse using the <a href="http://eclipse.org/m2e/" target="_blank">m2e</a> plugin.</p>
+                      <p>In order to start the ADAMS user interface, you need to create a Run configuration with the following main class:</p>
+                      <p><code>adams.gui.Main</code></p>
+                      <p>All example flows use the placeholder <code>${EXAMPLE_FLOWS}</code>, which is relative to the module's path. In order to execute the example flows from module <em>adams-weka</em>, you need to set <em>adams-weka</em> as project in your launcher.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion-dev" href="#collapse-dev-3">
+                Continuous integration
+              </a>
+            </h4>
+          </div>
+          <div id="collapse-dev-3" class="panel-collapse collapse">
+            <div class="panel-body">
+              <p>ADAMS is being built (and tested) every night (New Zealand time) using the <a href="http://hudson-ci.org/" target="_blank">Hudson Continuous Integration</a> server, to pick up code commits that (potentially) break the framework.</p>
+              <p>You can check out the current state of the ADAMS build at the following URL:</p>
+              <p><code><a href="https://adams.cms.waikato.ac.nz/hudson/" target="_blank">https://adams.cms.waikato.ac.nz/hudson/</a></code></p>
+            </div>
+          </div>
+        </div>
       </div>
-      <script>$("#footer").load("footer.html");</script>
+
+      <div id="footer-simple">
+      </div>
+      <script>$("#footer-simple").load("footer.html");</script>
     </div> <!-- /container -->
 
 
