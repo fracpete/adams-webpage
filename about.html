@@ -34,9 +34,24 @@
 
     <div class="container">
       <div class="page-header">
-        <h1>Features</h1>
+        <h1>About</h1>
       </div>
 
+      <p>The core of ADAMS is the <em>workflow engine</em>, which follows the philosophy of <em>less is more</em>. Instead of letting the user place operators (or actors in ADAMS terms) on a canvas and then manually connect inputs and outputs, ADAMS uses a tree-like structure. This structure and the control actors define how the data is flowing in the workflow, no explicit connections necessary. The tree-like structure stems from the internal object representation and the nesting of sub-actors within a<em>ctor-handlers</em>.</p>
+
+      <h3>Example flow</h3>
+
+      <p><img src="img/examples/flow_snippet.png" /></p>
+
+      <ul>
+        <li>Horizontal and vertical indicators show how the data flows</li>
+        <li>Each actor has its own icon, since the name can be changed arbitrarily</li>
+        <li>Four types of actors: standalone (red; no input, no output), source (orange; only output), transformer (green; input and output) and sink (greyl; only input)</li>
+        <li>Control actors, i.e., actors that determine the flow of data or flow execution are blue</li>
+        <li>Actors with parameters usually show a so-called quick info on the right-hand side of the name, to give the user an idea how the actor is parametrized without having to open up the dialog with the options.</li>
+      </ul>
+
+      <h3>Features</h3>
       <p>Here is an overview of some of the functionality available in ADAMS:</p>
 
       <table class="table table-striped">
@@ -94,9 +109,9 @@
         </tbody>
       </table>
 
-      <div id="footer">
+      <div id="footer-simple">
       </div>
-      <script>$("#footer").load("footer.html");</script>
+      <script>$("#footer-simple").load("footer.html");</script>
     </div> <!-- /container -->
 
 
