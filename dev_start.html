@@ -139,8 +139,7 @@
   &lt;host&gt;proxy.blah.com&lt;/host&gt;
   &lt;port&gt;3128&lt;/port&gt;
   &lt;nonProxyHosts&gt;localhost|*.blah.com&lt;/nonProxyHosts&gt;
-&lt;/proxy&gt;
-                      </pre>
+&lt;/proxy&gt;</pre>
                       <p>If your proxy requires a user/password, then you have to 1) generate a master password with Maven (which gets stored in <em>.m2/settings-security.xml</em>) and then 2) the actual password for the proxy. The details are explained <a href="http://maven.apache.org/guides/mini/guide-encryption.html" target="_blank">here</a> on the Maven homepage. Once you've created the passwords, you have to add the following tag to your <em>settings.xml</em> file and replace the <em>USER</em> and <em>ENCRYPTED_PASSWORD</em> placeholders accordingly.</p>
                       <pre>
 &lt;proxy&gt;
@@ -151,8 +150,7 @@
   &lt;username&gt;USER&lt;/username&gt;
   &lt;password&gt;{ENCRYPTED_PASSWORD}&lt;/password&gt;
   &lt;nonProxyHosts&gt;localhost|*.blah.com&lt;/nonProxyHosts&gt;
-&lt;/proxy&gt;
-                      </pre>
+&lt;/proxy&gt;</pre>
                     </div>
                   </div>
                 </div>
@@ -190,6 +188,316 @@
               <p>ADAMS is being built (and tested) every night (New Zealand time) using the <a href="http://hudson-ci.org/" target="_blank">Hudson Continuous Integration</a> server, to pick up code commits that (potentially) break the framework.</p>
               <p>You can check out the current state of the ADAMS build at the following URL:</p>
               <p><code><a href="https://adams.cms.waikato.ac.nz/hudson/" target="_blank">https://adams.cms.waikato.ac.nz/hudson/</a></code></p>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion-dev" href="#collapse-dev-4">
+                Extending
+              </a>
+            </h4>
+          </div>
+          <div id="collapse-dev-4" class="panel-collapse collapse">
+            <div class="panel-body">
+              <p>What do you need to do to create a new actor? Not much, simply create a new class and add a 16x16 icon for this actor. That's it!</p>
+              <p>The following sections will guide you through the process of implementing your first actor.</p>
+              <div class="panel-group" id="accordion-extending">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion-extending" href="#collapse-extending-1">
+                        The class
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-extending-1" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>In the example here, we will be implementing a simple transformer that can take integers, doubles and numbers in string representation. This transformer then adds the number 42 to them and forwards the result for further processing.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion-extending" href="#collapse-extending-2">
+                        Picking the superclass
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-extending-2" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>The four types of actors in ADAMS, standalone, source, transformer and sink, are determined by two interfaces, depending on whether input is accepted and/or output is generated:</p>
+                      <ul>
+                        <li><code>adams.flow.core.InputConsumer</code> (transformer, sink)</li>
+                        <li><code>adams.flow.core.OutputProducer</code> (source, transformer)</li>
+                      </ul>
+                      <p>But you don't have to implement these interfaces yourself, there are already some abstract superclasses that you can directly derive from:</p>
+                      <ul>
+                        <li><code>adams.flow.standalone.AbstractStandalone</code></li>
+                        <li><code>adams.flow.source.AbstractSource</code></li>
+                        <li><code>adams.flow.transformer.AbstractTransformer</code></li>
+                        <li><code>adams.flow.sink.AbstractSink</code></li>
+                      </ul>
+                      <p>Thanks to ADAMS' dynamic class discovery, you only have to place your classes in the same package as these abstract superclasses. If you want to use a different class hierarchy, you have to let ADAMS know about in form of a properties file. For instance, for developing our new transformer, called <code>org.awesome.transformer.Funky</code>, you have to create a file called <code>ClassLister.props</code> in the <code>adams.core</code> package with the following content:</p>
+                      <pre>
+adams.flow.core.AbstractActor=\
+  org.awesome.transformer</pre>
+                      <p>Ultimately, all actors are derived from <code>adams.flow.core.AbstractActor</code>, hence you need ADAMS let know in which packages to look for them.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion-extending" href="#collapse-extending-3">
+                        Documentation
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-extending-3" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>In order to keep documentation relevant and avoid duplication, it is placed directly into the code. Each actor has a <code>globalInfo</code> method returning the main description in the help available in the GUI.</p>
+                      <p>In our example, the the method would look like this:</p>
+                      <pre>
+public String globalInfo() {
+  return "Our funky transformer. Adds 42 to incoming data.";
+}</pre>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion-extending" href="#collapse-extending-4">
+                        Input and output
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-extending-4" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>Before a flow is executed, ADAMS checks whether the actors are actually compatible with each other. For this <strong>type check</strong>, InputConsumers have an <code>accepts()</code> method and OutputProducers a <code>generates()</code> one, each return an array of classes.</p>
+                      <p>Our <em>Funky</em> transformer is supposed to take integers, doubles and strings. In other words, the <code>accepts(</code>) method looks like this:</p>
+                      <pre>
+public Class[] accepts() {
+  return new Class[]{Integer.class, Double.class, String.class};
+}</pre>
+                      <p>As output, the transformer only generates doubles. Here is the corresponding <code>generates()</code> method:</p>
+                      <pre>
+public Class[] generates() {
+  return new Class[]{Double.class};
+}</pre>
+                      <p>Any actor that outputs numbers (e.g., <code>adams.flow.source.RandomNumberGenerator</code>) or strings (e.g., <code>adams.flow.source.StringConstants</code>), will be compatible with our transformer.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion-extending" href="#collapse-extending-5">
+                        Processing data
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-extending-5" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>Since the handling of documentation and compatibility is covered, we can concentrate on the actual processing of the data.</p>
+                      <p>The life cycle of an actor is as follows:</p>
+                      <ol>
+                        <li><code>setUp()</code> (initialization)</li>
+                        <li><code>execute()</code> (called with each token passing through, in case of transformers)</li>
+                        <li><code>wrapUp()</code> (called after flow finishes)</li>
+                        <li><code>destroy()</code> (for freeing up memory, etc.)</li>
+                      </ol>
+                      <p>The <code>execute()</code> is just a wrapper around the following three methods:</p>
+                      <ol>
+                        <li><code>preExcecute()</code></li>
+                        <li><code>doExcecute()</code></li>
+                        <li><code>postExcecute()</code></li>
+                      </ol>
+                      <p>In our case, only the <code>doExecute()</code> method needs to be implemented, as it is the only that is abstract. The others perform other duties, like debugging output of the size of the actor before/after the <code>doExecute()</code> call for tracking memory leaks.</p>
+                      <p>Data gets passed around in the flow as tokens and the container class dealing with it is <code>adams.flow.core.Token</code> (the actual data is its payload). The <code>AbstractTransformer</code> class already contains a member variable for the input, <code>m_InputToken</code>, and one for the output, <code>m_OutputToken</code>. Leaving the output token at null stops the execution of any actor following ours. We will be using this approach in case we encounter a string that we can't parse as a double. The <code>doExecute()</code> method also returns string, which is used to return error messages (<code>null</code> if everything is fine). If we have a valid number, we add 42 to it.</p>
+                      <p>Here is the code processing the data:</p>
+                      <pre>
+protected String doExecute() {
+  String result = null;
+  Number number = null;
+  if (m_InputToken.getPayload() instanceof String) {
+    try {
+      number = new Double((String) m_InputToken.getPayload());
+    } catch (Exception e) {
+      number = null;
+      result = "Failed to parse input string '" + m_InputToken.getPayload() + "' as number: " + e;
+    }
+  }
+  else {
+    number = (Number) m_InputToken.getPayload();
+  }
+  if (number != null)
+    m_OutputToken = new Token(number.doubleValue() + 42.0);
+  return result;
+}</pre>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion-extending" href="#collapse-extending-6">
+                        The full implementation
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-extending-6" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>And here is the full implementation of our transformer:</p>
+                      <pre>
+package adams.flow.transformer;
+
+import adams.flow.core.Token;
+
+public class Funky extends AbstractTransformer {
+  public String globalInfo() {
+    return "Our funky transformer. Adds 42 to incoming data.";
+  }
+  public Class[] accepts() {
+    return new Class[]{Integer.class, Double.class, String.class};
+  }
+  public Class[] generates() {
+    return new Class[]{Double.class};
+  }
+  protected String doExecute() {
+    String result = null;
+    Number number = null;
+    if (m_InputToken.getPayload() instanceof String) {
+      try {
+	number = new Double((String) m_InputToken.getPayload());
+      } catch (Exception e) {
+	number = null;
+	result = "Failed to parse input string '" + m_InputToken.getPayload() + "' as number: " + e;
+      }
+    }
+    else {
+      number = (Number) m_InputToken.getPayload();
+    }
+    if (number != null)
+      m_OutputToken = new Token(number.doubleValue() + 42.0);
+    return result;
+  }
+}</pre>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion-extending" href="#collapse-extending-7">
+                        Option handling
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-extending-7" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>Though not necessary for this example, I will still cover briefly how option handling works in ADAMS.</p>
+                      <p>Each option that is to be available through the user interface, needs to implement a <strong>get</strong>, a <strong>set</strong> and a <strong>tool-tip</strong> method. The latter contains the documentation for the option.</p>
+                      <p>In our transformer example, we might want to make the actor a bit more flexible and allow the user to choose and increment different from 42. We could call the option (or property in Java Beans terms) <em>increment</em>. This will result in the following three methods:</p>
+                      <ul>
+                        <li><code>getIncrement()</code></li>
+                        <li><code>setIncrement(double)</code></li>
+                        <li><code>incrementTipText()</code></li>
+                      </ul>
+                      <p>Now we have to register this property with the actor as an option, in order to make it accessible in the user interface. This happens in the methdo <code>defineOptions()</code>, by adding an option description to the option manager. This description includes the command-line string of the option, the Bean property name and the default value. For numeric values you can also describe lower and upper bounds. We don't need really need bounds, but for demonstration purposes, we only want to allow positive values or zero:</p>
+                      <pre>
+public void defineOptions() {
+  super.defineOptions();
+  m_OptionManager.add(
+          "inc", "increment",
+          42.0, 0.0, null);
+}</pre>
+                      <p>One more important thing to mention: each <code>set</code> method for an option needs to call the <code>reset()</code> method. This call signals the actor that the options have changed and the current state is no longer valid.</p>
+                      <p>The complete actor code now looks like this:</p>
+                      <pre>
+package adams.flow.transformer;
+
+import adams.flow.core.Token;
+
+public class Funky extends AbstractTransformer {
+  protected double m_Increment;
+  public String globalInfo() {
+    return "Our funky transformer.";
+  }
+  public void defineOptions() {
+    super.defineOptions();
+    m_OptionManager.add(
+	    "inc", "increment",
+	    42.0, 0.0, null);
+  }
+  public void setIncrement(double value) {
+    if (value >= 0) {
+      m_Increment = value;
+      reset();
+    } else {
+      getSystemErr().println("Increment must be >= 0, provided: " + value);
+    }
+  }
+  public double getIncrement() {
+    return m_Increment;
+  }
+  public String incrementTipText() {
+    return "The amount to add to the incoming values.";
+  }
+  public Class[] accepts() {
+    return new Class[]{Integer.class, Double.class, String.class};
+  }
+  public Class[] generates() {
+    return new Class[]{Double.class};
+  }
+  protected String doExecute() {
+    String result = null;
+    Number number = null;
+    if (m_InputToken.getPayload() instanceof String) {
+      try {
+	number = new Double((String) m_InputToken.getPayload());
+      } catch (Exception e) {
+	number = null;
+	result = "Failed to parse input string '" + m_InputToken.getPayload() + "' as number: " + e;
+      }
+    }
+    else {
+      number = (Number) m_InputToken.getPayload();
+    }
+    if (number != null)
+      m_OutputToken = new Token(number.doubleValue() + m_Increment);
+    return result;
+  }
+}</pre>
+                      <p>One final note: instead of using <code>System.out</code> and <code>System.err</code>, actors should use <code>getSystemOut()</code> and <code>getSystemErr()</code> for output on the console. By doing this, output from stdout and stderr gets captured by ADAMS' logging facility. Debugging output can be output using for instance <code>debug(String)</code>.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion-extending" href="#collapse-extending-8">
+                        The icon
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-extending-8" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>As for the icon that goes with the actor, it is simple a GIF, PNG or JPG image with the same filename as the actor, placed in the <code>adams.gui.images</code> package. For instance, using our <code>org.awesome.transformer.Funky</code> transformer example, you could create a file called <code>org.awesome.transformer.Funky.gif</code>, using one of these templates:</p>
+                      <ul>
+                        <li><code>adams.flow.standalone.Unknown.gif</code></li>
+                        <li><code>adams.flow.source.Unknown.gif</code></li>
+                        <li><code>adams.flow.transformer.Unknown.gif</code></li>
+                        <li><code>adams.flow.sink.Unknown.gif</code></li>
+                      </ul>
+                      <p>The templates already contain a frame with the color associated with the type of actor: <font color="red">standalone</font>, <font color="orange">source</font>, <font color="green">transformer</font> and <font color="grey">sink</font>.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
