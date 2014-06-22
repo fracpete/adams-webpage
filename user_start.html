@@ -113,7 +113,10 @@
                       <p><img src="img/examples/actorsuggestions-context4.png" /></p>
                       <p>And finally, we add the <em>Display</em> sink for viewing the result of the cross-validation:</p>
                       <p><img src="img/examples/actorsuggestions-context5.png" /></p>
-                      <p>Before the flow can be executed, you still need to add a <em>CallableActors</em> standalone actor before the source actor. To this special container actor, you will add (and configure) a <em>WekaClassifierSetup</em> source. This is the source that the <em>WekaCrossValidationEvaluator</em> references.</p>
+                      <p>Before the flow can be executed, we still need to provide the cross-validation evaluator with a classifier setup. This is done by configuring a <em>callable</em> source actor below the special <em>CallableActors</em> standalone:</p>
+                      <p><img src="img/examples/actorsuggestions-context6.png" /></p>
+                      <p>The <em>WekaClassifierSetup</em> source simply outputs a classifier setup:</p>
+                      <p><img src="img/examples/actorsuggestions-context7.png" /></p>
                     </div>
                   </div>
                 </div>
