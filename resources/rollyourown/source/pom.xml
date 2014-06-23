@@ -6,15 +6,15 @@
   <parent>
     <groupId>nz.ac.waikato.cms.adams</groupId>
     <artifactId>adams-pom</artifactId>
-    <version>#VERSION#</version>
+    <version>{VERSION}</version>
   </parent>
 
-  <artifactId>#PROJECT#</artifactId>
+  <artifactId>{PROJECT}</artifactId>
   <packaging>jar</packaging>
 
-  <name>#PROJECT#</name>
+  <name>{PROJECT}</name>
   <description>Generated with the 'roll-your-own' feature of the ADAMS homepage.</description>
-  <url>http://adams.cms.waikato.ac.nz/</url>
+  <url>https://adams.cms.waikato.ac.nz/</url>
   <organization>
     <name>University of Waikato, Hamilton, NZ</name>
     <url>http://www.waikato.ac.nz/</url>
@@ -30,46 +30,17 @@
     <dependency>
       <groupId>nz.ac.waikato.cms.adams</groupId>
       <artifactId>adams-core</artifactId>
-      <version>#VERSION#</version>
+      <version>{VERSION}</version>
     </dependency>
-
-   #MODULES#
+{MODULES}
   </dependencies>
 
   <build>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-      </plugin>
-
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>latex-maven-plugin</artifactId>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
         <executions>
-          <execution>
-            <id>make-assembly-attached</id>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-            <configuration>
-              <attach>true</attach>
-              <descriptors>
-                <descriptor>src/main/assembly/flows.xml</descriptor>
-              </descriptors>
-            </configuration>
-          </execution>
           <execution>
             <id>make-assembly-not-attached</id>
             <phase>package</phase>
@@ -81,6 +52,7 @@
               <descriptors>
                 <descriptor>src/main/assembly/bin.xml</descriptor>
                 <descriptor>src/main/assembly/doc.xml</descriptor>
+                <descriptor>src/main/assembly/flows.xml</descriptor>
               </descriptors>
             </configuration>
           </execution>
@@ -117,15 +89,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
-      </plugin>
-
-      <!-- updates/uses 'src/license/THIRD-PARTY.properties' for missing libraries -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>license-maven-plugin</artifactId>
-        <configuration>
-          <useMissingFile>true</useMissingFile>
-        </configuration>
       </plugin>
     </plugins>
   </build>
