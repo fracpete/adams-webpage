@@ -1,13 +1,14 @@
 adams-addons-all
 adams-base-all
 adams-compress
-adams-dl4j
 adams-event
 adams-excel
 adams-gnuplot
 adams-groovy
 adams-heatmap
+adams-image-webservice
 adams-imaging
+adams-jooq
 adams-jython
 adams-latex
 adams-maps
