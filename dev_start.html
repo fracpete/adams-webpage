@@ -157,20 +157,193 @@
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion-dev" href="#collapse-dev-3">
+                IntelliJ IDEA
+              </a>
+            </h4>
+          </div>
+          <div id="collapse-dev-3" class="panel-collapse collapse">
+            <div class="panel-body">
+              <p><a href="https://www.jetbrains.com/idea/" target="_blank">IntelliJ IDEA</a> is a light-weight IDE for Java, developed by <a href="https://www.jetbrains.com/" target="_blank">JetBrains</a>. The following instructions will get you set up for developing with ADAMS.</p>
+              <div class="panel-group" id="accordion-intellij">
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion-source" href="#collapse-source-4">
-                        Eclipse
+                      <a data-toggle="collapse" data-parent="#accordion-intellij" href="#collapse-intellij-1">
+                        Plugins to install
                       </a>
                     </h4>
                   </div>
-                  <div id="collapse-source-4" class="panel-collapse collapse">
+                  <div id="collapse-intellij-1" class="panel-collapse collapse">
                     <div class="panel-body">
-                      <p>You can directly import Maven projects in Eclipse using the <a href="http://eclipse.org/m2e/" target="_blank">m2e</a> plugin. You can import <a href="resources/eclipse-code-formatting.xml" target="_blank">this code formatting setup</a>. See the <em>adams-core</em> manual, section <em>Tools</em>, subsection <em>Eclipse</em> for more details.</p>
-                      <p>In order to start the ADAMS user interface, you need to create a Run configuration with the following main class:</p>
-                      <p><code>adams.gui.Main</code></p>
-                      <p>All example flows use the placeholder <code>${EXAMPLE_FLOWS}</code>, which is relative to the module's path. In order to execute the example flows from module <em>adams-weka</em>, you need to set <em>adams-weka</em> as project in your launcher.</p>
+                      <p>You want to make sure that you have the following plugins installed/enabled:
+                        <ul>
+                          <li>Subversion Integration</li>
+                          <li>Maven Integration</li>
+                          <li>GenerateSerialVersionUID (not bundled)</li>
+                        </ul>
+                      </p>
+                      <p>
+                        <img src="img/tools/intellij-plugins.png"/>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion-intellij" href="#collapse-intellij-2">
+                        Code formatting
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-intellij-2" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>ADAMS uses mixed spaces/tabs for indentation, with indentation being 2 spaces and a tab representing 8 spaces.</p>
+                      <p/>
+                        <img src="img/tools/intellij-indentation.png"/>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion-intellij" href="#collapse-intellij-3">
+                        Automatically compile projects
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-intellij-3" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>Usually, you don't want to compile when you launch the application, but whenever you change the code. Hence, enable "auto make":</p>
+                      <p/>
+                        <img src="img/tools/intellij-make.png"/>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion-intellij" href="#collapse-intellij-4">
+                        Application defaults
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-intellij-4" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>When creating launchers (<em>Configurations</em>) for applications, you don't necessarily want a build to slow you down, especially if you have <em>auto make</em> enabled. Hence remove the <em>Build</em> from the list of actions before launch. Furthermore, you will most likely have the module's top level directory as the default working directory when starting up the application. You can set this using the <code>$MODULE_DIR$</code> variable.</p>
+                      <p/>
+                        <img src="img/tools/intellij-app_defaults.png"/>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion-intellij" href="#collapse-intellij-5">
+                        Color themes
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-intellij-5" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>There are a plethora of color themes for IntelliJ out there, in case you don't like the ones it is shipped with:<p/>
+                      <p><a href="http://www.ideacolorthemes.org/home/" target="_blank">http://www.ideacolorthemes.org/home/</a></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion-intellij" href="#collapse-intellij-6">
+                        Setting up ADAMS
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-intellij-6" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>You can import ADAMS using the start screen of IntelliJ by clicking on <em>Import project</em>:</p>
+                      <p/>
+                        <img src="img/tools/intellij-import_project-adams2.png"/>
+                      </p>
+                      <p>Or by selecting <em>File -&gt; Import project...</em> from the main menu.</p>
+                      <p/>
+                        <img src="img/tools/intellij-import_project-adams.png"/>
+                      </p>
+                      <p>Then, select the top-level directory of ADAMS and import it as Maven project:
+                        <ul>
+                          <li>import module from external model: Maven</li>
+                          <li>check <em>create module groups for multi-module Maven projects</em></li>
+                          <li>select any relevant Maven profiles (or just use all of them)</li>
+                        </ul>
+                      </p>
+                      <p>If you want to add other projects, like <em>adams-addons</em> or <em>adams-incubator</em>, you must import them via the main menu's <em>File -&gt; Import module...</em> (<strong>not</strong> via Import project!).</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion-intellij" href="#collapse-intellij-7">
+                        Configuring the JDK
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-intellij-7" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>Once you've imported ADAMS, you can configure the JDK that you want to use (1.8 at the time of writing). For this, open <em>Project structure</em> from the main menu.</p>
+                      <p>Under <em>SDKs</em> you can define all the SDKs that you want to be able to use (simply click on <strong>+</strong> and select the top-level directory of your JDK):</p>
+                      <p/>
+                        <img src="img/tools/intellij-sdks.png"/>
+                      </p>
+                      <p>And under <em>Project</em>, you can then select the SDK that you want to use for the project:<p/>
+                      <p/>
+                        <img src="img/tools/intellij-project-sdk.png"/>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion-intellij" href="#collapse-intellij-8">
+                        Launching ADAMS
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-intellij-8" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>For creating a launcher (or <em>Run configuration</em>), you select <em>Run -&gt; Edit configurations...</em> from the main menu. When clicking on the <strong>+</strong>, use <em>Application</em> as template and fill in <code>adams.gui.Main</code> as the main class and the amount of RAM that you want to use, eg 2GB:</p>
+                      <p/>
+                        <img src="img/tools/intellij-main.png"/>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion-intellij" href="#collapse-intellij-9">
+                        External tools
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-intellij-9" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>Whether you want to launch your image editing tool (e.g., <a href="http://www.gimp.org/" target="_blank">Gimp</a> for creating icons) or launching Maven to auto-generate code (e.g., when using <a href="http://cxf.apache.org/" target="_blank">Apache CXF</a>), then you can use IDEA's <em>External tools</em> facility:</p>
+                      <p/>
+                        <img src="img/tools/intellij-external_tools.png"/>
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -181,12 +354,29 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion-dev" href="#collapse-dev-3">
+              <a data-toggle="collapse" data-parent="#accordion-dev" href="#collapse-dev-4">
+                Eclipse
+              </a>
+            </h4>
+          </div>
+          <div id="collapse-dev-4" class="panel-collapse collapse">
+            <div class="panel-body">
+              <p>You can directly import Maven projects in <a href="http://www.eclipse.org/" target="_blank">Eclipse</a> using the <a href="http://eclipse.org/m2e/" target="_blank">m2e</a> plugin. You can import <a href="resources/eclipse-code-formatting.xml" target="_blank">this code formatting setup</a>. See the <em>adams-core</em> manual, section <em>Tools</em>, subsection <em>Eclipse</em> for more details.</p>
+              <p>In order to start the ADAMS user interface, you need to create a Run configuration with the following main class:</p>
+              <p><code>adams.gui.Main</code></p>
+              <p>All example flows use the placeholder <code>${EXAMPLE_FLOWS}</code>, which is relative to the module's path. In order to execute the example flows from module <em>adams-weka</em>, you need to set <em>adams-weka</em> as project in your launcher.</p>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion-dev" href="#collapse-dev-5">
                 Continuous integration
               </a>
             </h4>
           </div>
-          <div id="collapse-dev-3" class="panel-collapse collapse">
+          <div id="collapse-dev-5" class="panel-collapse collapse">
             <div class="panel-body">
               <p>ADAMS is being built (and tested) every night (New Zealand time) using the <a href="http://hudson-ci.org/" target="_blank">Hudson Continuous Integration</a> server, to pick up code commits that (potentially) break the framework.</p>
               <p>You can check out the current state of the ADAMS build at the following URL:</p>
@@ -197,12 +387,12 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion-dev" href="#collapse-dev-4">
+              <a data-toggle="collapse" data-parent="#accordion-dev" href="#collapse-dev-6">
                 Extending
               </a>
             </h4>
           </div>
-          <div id="collapse-dev-4" class="panel-collapse collapse">
+          <div id="collapse-dev-6" class="panel-collapse collapse">
             <div class="panel-body">
               <p>What do you need to do to create a new actor? Not much, simply create a new class and add a 16x16 icon for this actor. That's it!</p>
               <p>The following sections will guide you through the process of implementing your first actor.</p>
