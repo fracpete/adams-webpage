@@ -187,7 +187,6 @@
                         <ul>
                           <li>Subversion Integration</li>
                           <li>Maven Integration</li>
-                          <li>GenerateSerialVersionUID (not bundled)</li>
                         </ul>
                       </p>
                       <p>
@@ -240,7 +239,7 @@
                   </div>
                   <div id="collapse-intellij-4" class="panel-collapse collapse">
                     <div class="panel-body">
-                      <p>When creating launchers (<em>Configurations</em>) for applications, you don't necessarily want a build to slow you down, especially if you have <em>auto make</em> enabled. Hence remove the <em>Build</em> from the list of actions before launch. Furthermore, you will most likely have the module's top level directory as the default working directory when starting up the application. You can set this using the <code>$MODULE_DIR$</code> variable.</p>
+                      <p>Despite having <em>auto make</em> enabled, it pays off to have a build action before launching applications. Hence change the <em>Before launch</em> action to use <em>Make, no error check</em>. Furthermore, you will most likely have the module's top level directory as the default working directory when starting up the application. You can set this using the <code>$MODULE_DIR$</code> variable.</p>
                       <p/>
                         <img src="img/tools/intellij-app_defaults.png"/>
                       </p>
