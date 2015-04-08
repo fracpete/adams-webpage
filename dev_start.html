@@ -55,7 +55,7 @@
               <ul>
                 <li><a href="http://www.oracle.com/technetwork/java/" target="_blank">Java</a> 1.7+</li>
                 <li><a href="http://maven.apache.org/" target="_blank">Maven</a> 3.0+</li>
-                <li><a href="http://www.tug.org/texlive/" target="_blank">TexLive</a> 2010+ (for compiling the LaTeX manuals)</li>
+                <li><a href="http://www.tug.org/texlive/" target="_blank">TexLive</a> 2010+ for compiling the LaTeX manuals (use <a href="https://tug.org/mactex/" target="_blank">MacTex</a> for Mac OSX)</li>
               </ul>
             </div>
           </div>
@@ -110,11 +110,13 @@
                   <div id="collapse-source-2" class="panel-collapse collapse">
                     <div class="panel-body">
                       <p>ADAMS uses <a href="http://maven.apache.org/" target="_blank">Maven</a> as build tool. See the Requirements section for more details on what you need for compiling the code.</p>
-                      <p>Download the <a href="resources/settings.xml" target="_blank">settings.xml</a> file and place it in the following directory (if you are behind a proxy, see section <strong>Proxy</strong> below):</p>
+                      <p>Download the <a href="resources/settings.xml" target="_blank">settings.xml</a> file and place it in the following directory (if you are behind a proxy, see section <strong>Proxy</strong> below):
                       <ul>
                         <li>Linux/Unix/Mac: <code>$HOME/.m2</code></li>
                         <li>Windows: <code>%USERPROFILE%\.m2</code></li>
                       </ul>
+                      </p>
+                      <p>Starting with Java 8, you need to set the environment variable <code>JAVA_TOOL_OPTIONS</code> to <code>-Djsse.enableSNIExtension=false</code> to avoid the <code>Server SSL Error - handshake alert: unrecognized_name</code> error message.</p>
                       <p>You can compile the source code in the console as follows:</p>
                       <p><code>mvn clean install</code></p>
                       <p>If you want to skip the tests, use the following:</p>
