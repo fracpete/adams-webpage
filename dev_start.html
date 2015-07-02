@@ -624,11 +624,9 @@ public class Funky extends AbstractTransformer {
 	    42.0, 0.0, null);
   }
   public void setIncrement(double value) {
-    if (value >= 0) {
+    if (getOptionManager().isValid("increment", value)) { // checks bounds for numeric options
       m_Increment = value;
       reset();
-    } else {
-      getSystemErr().println("Increment must be >= 0, provided: " + value);
     }
   }
   public double getIncrement() {
