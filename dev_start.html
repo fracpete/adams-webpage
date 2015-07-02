@@ -178,22 +178,50 @@
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion-intellij" href="#collapse-intellij-1">
-                        Plugins to install
+                      <a data-toggle="collapse" data-parent="#accordion-intellij" href="#collapse-intellij-6">
+                        Setting up ADAMS
                       </a>
                     </h4>
                   </div>
-                  <div id="collapse-intellij-1" class="panel-collapse collapse">
+                  <div id="collapse-intellij-6" class="panel-collapse collapse">
                     <div class="panel-body">
-                      <p>You want to make sure that you have the following plugins installed/enabled:
+                      <p>You can import ADAMS using the start screen of IntelliJ by clicking on <em>Import project</em>:</p>
+                      <p/>
+                        <img src="img/tools/intellij-import_project-adams2.png"/>
+                      </p>
+                      <p>Or by selecting <em>File -&gt; Import project...</em> from the main menu.</p>
+                      <p/>
+                        <img src="img/tools/intellij-import_project-adams.png"/>
+                      </p>
+                      <p>Then, select the top-level directory of ADAMS and import it as Maven project:
                         <ul>
-                          <li>Subversion Integration</li>
-                          <li>Maven Integration</li>
-                          <li>LaTeX</li>
+                          <li>import module from external model: Maven</li>
+                          <li>check <em>create module groups for multi-module Maven projects</em></li>
+                          <li>select any relevant Maven profiles (or just use all of them)</li>
                         </ul>
                       </p>
-                      <p>
-                        <img src="img/tools/intellij-plugins.png"/>
+                      <p>If you want to add other projects, like <em>adams-addons</em> or <em>adams-incubator</em>, you must import them via the main menu's <em>File -&gt; Import module...</em> (<strong>not</strong> via Import project!).</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion-intellij" href="#collapse-intellij-7">
+                        Configuring the JDK
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-intellij-7" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>Once you've imported ADAMS, you can configure the JDK that you want to use (1.8 at the time of writing). For this, open <em>Project structure</em> from the main menu.</p>
+                      <p>Under <em>SDKs</em> you can define all the SDKs that you want to be able to use (simply click on <strong>+</strong> and select the top-level directory of your JDK):</p>
+                      <p/>
+                        <img src="img/tools/intellij-sdks.png"/>
+                      </p>
+                      <p>And under <em>Project</em>, you can then select the SDK that you want to use for the project:<p/>
+                      <p/>
+                        <img src="img/tools/intellij-project-sdk.png"/>
                       </p>
                     </div>
                   </div>
@@ -261,57 +289,6 @@
                     <div class="panel-body">
                       <p>There are a plethora of color themes for IntelliJ out there, in case you don't like the ones it is shipped with:<p/>
                       <p><a href="http://www.ideacolorthemes.org/home/" target="_blank">http://www.ideacolorthemes.org/home/</a></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion-intellij" href="#collapse-intellij-6">
-                        Setting up ADAMS
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapse-intellij-6" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <p>You can import ADAMS using the start screen of IntelliJ by clicking on <em>Import project</em>:</p>
-                      <p/>
-                        <img src="img/tools/intellij-import_project-adams2.png"/>
-                      </p>
-                      <p>Or by selecting <em>File -&gt; Import project...</em> from the main menu.</p>
-                      <p/>
-                        <img src="img/tools/intellij-import_project-adams.png"/>
-                      </p>
-                      <p>Then, select the top-level directory of ADAMS and import it as Maven project:
-                        <ul>
-                          <li>import module from external model: Maven</li>
-                          <li>check <em>create module groups for multi-module Maven projects</em></li>
-                          <li>select any relevant Maven profiles (or just use all of them)</li>
-                        </ul>
-                      </p>
-                      <p>If you want to add other projects, like <em>adams-addons</em> or <em>adams-incubator</em>, you must import them via the main menu's <em>File -&gt; Import module...</em> (<strong>not</strong> via Import project!).</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion-intellij" href="#collapse-intellij-7">
-                        Configuring the JDK
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapse-intellij-7" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <p>Once you've imported ADAMS, you can configure the JDK that you want to use (1.8 at the time of writing). For this, open <em>Project structure</em> from the main menu.</p>
-                      <p>Under <em>SDKs</em> you can define all the SDKs that you want to be able to use (simply click on <strong>+</strong> and select the top-level directory of your JDK):</p>
-                      <p/>
-                        <img src="img/tools/intellij-sdks.png"/>
-                      </p>
-                      <p>And under <em>Project</em>, you can then select the SDK that you want to use for the project:<p/>
-                      <p/>
-                        <img src="img/tools/intellij-project-sdk.png"/>
-                      </p>
                     </div>
                   </div>
                 </div>
