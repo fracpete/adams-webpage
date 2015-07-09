@@ -29,6 +29,7 @@ adams-rats
 adams-spreadsheet
 adams-timeseries
 adams-twitter
+adams-video
 adams-visualstats
 adams-webservice
 adams-weka
