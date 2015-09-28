@@ -8,6 +8,10 @@ adams-gnuplot
 adams-groovy
 adams-heatmap
 adams-imaging
+adams-imaging-boofcv
+adams-imaging-imagej
+adams-imaging-imagemagick
+adams-imaging-openimaj
 adams-image-webservice
 adams-javacv
 adams-jooq
