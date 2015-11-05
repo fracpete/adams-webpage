@@ -116,7 +116,8 @@
                         <li>Windows: <code>%USERPROFILE%\.m2</code></li>
                       </ul>
                       </p>
-                      <p>Starting with Java 8, you need to set the environment variable <code>JAVA_TOOL_OPTIONS</code> to <code>-Djsse.enableSNIExtension=false</code> to avoid the <code>Server SSL Error - handshake alert: unrecognized_name</code> error message.</p>
+                      <p>You need to set the environment variable <code>JAVA_TOOL_OPTIONS</code> to <code>-Djsse.enableSNIExtension=false</code> to avoid the <code>Server SSL Error - handshake alert: unrecognized_name</code> error message.</p>
+                      <p>Also recommended, is adding the following parameter to the <code>JAVA_TOOL_OPTIONS</code> in order to always get a full strack traces whenever an error occurs: <code>-XX:-OmitStackTraceInFastThrow</code></p>
                       <p>You can compile the source code in the console as follows:</p>
                       <p><code>mvn clean install</code></p>
                       <p>If you want to skip the tests, use the following:</p>
