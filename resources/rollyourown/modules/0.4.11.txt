@@ -13,7 +13,6 @@ adams-imaging-imagej
 adams-imaging-imagemagick
 adams-imaging-openimaj
 adams-image-webservice
-adams-javacv
 adams-jooq
 adams-jython
 adams-latex
