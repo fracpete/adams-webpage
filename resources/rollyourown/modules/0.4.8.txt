@@ -9,7 +9,6 @@ adams-groovy
 adams-heatmap
 adams-imaging
 adams-image-webservice
-adams-javacv
 adams-jooq
 adams-jython
 adams-latex
